@@ -1,0 +1,29 @@
+:root {
+  --bg: #f0efeb;
+  --fg: #0a0a0a;
+  --accent: #0a0a0a;
+  --muted: #888;
+  --font-pixel: "pf-pixelscript", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+.app {
+  min-height: 100vh;
+}

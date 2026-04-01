@@ -1,0 +1,133 @@
+.hiw {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 120px 10vw;
+}
+
+/* TOP ROW — header text left, ascii square right */
+.hiw__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 72px;
+}
+
+.hiw__header {
+  flex: 1;
+}
+
+.hiw__ascii-wrapper {
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ascii-box {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  color: rgba(232,232,228,0.35);
+  user-select: none;
+  white-space: pre;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+}
+
+.hiw__label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(232,232,228,0.45);
+  margin-bottom: 20px;
+}
+
+.hiw__title {
+  font-family: "pf-pixelscript", sans-serif;
+  font-weight: 50;
+  font-style: normal;
+  font-size: clamp(40px, 4.5vw, 72px);
+  line-height: 1.1;
+  color: var(--bg);
+  margin-bottom: 20px;
+}
+
+.hiw__desc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(232,232,228,0.5);
+  max-width: 460px;
+}
+
+/* CARDS GRID */
+.hiw__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.hiw__card {
+  display: flex;
+  gap: 24px;
+  padding: 48px 40px;
+  background: var(--fg);
+  transition: background 0.3s ease;
+}
+
+.hiw__card:hover {
+  background: #141414;
+}
+
+.hiw__num {
+  font-family: "pf-pixelscript", sans-serif;
+  font-size: 52px;
+  font-weight: 50;
+  color: rgba(232,232,228,0.2);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.hiw__card-title {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--bg);
+  margin-bottom: 10px;
+  padding-top: 10px;
+  letter-spacing: 0.02em;
+}
+
+.hiw__card-text {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(232,232,228,0.5);
+  font-weight: 300;
+}
+
+@media (max-width: 900px) {
+  .hiw__top {
+    flex-direction: column;
+  }
+  .hiw__ascii-wrapper {
+    width: 100%;
+    height: 220px;
+  }
+  .hiw__grid {
+    grid-template-columns: 1fr;
+  }
+  .hiw {
+    padding: 80px 6vw;
+  }
+}
