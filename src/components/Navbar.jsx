@@ -9,12 +9,6 @@ export default function Navbar() {
         <span className="logo-tag">Curiosity Map</span>
       </div>
 
-      <div className="navbar__meta">
-        <span className="navbar__location">NEW YORK / DELHI</span>
-        <span className="navbar__divider">—</span>
-        <span className="navbar__tagline">MAPPING MINDS</span>
-      </div>
-
       <div className="navbar__actions">
         <button className="btn-outline">Sign Up</button>
         <button className="btn-outline">Login</button>

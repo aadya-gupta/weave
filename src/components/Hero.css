@@ -67,16 +67,28 @@
 }
 
 .hero__headline {
-  font-family: var(--font-pixel);
-  font-weight: 50;
-  font-style: normal;
   font-size: clamp(52px, 7.5vw, 110px);
   line-height: 1.1;
-  letter-spacing: 0.02em;
   color: var(--fg);
   animation: fadeUp 0.8s ease forwards;
   opacity: 0;
   animation-delay: 0.25s;
+}
+
+.hero__headline--pixel {
+  font-family: 'Pixelify Sans', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  display: block;
+}
+
+.hero__headline--script {
+  font-family: "pf-pixelscript", sans-serif;
+  font-weight: 50;
+  font-style: normal;
+  letter-spacing: 0.02em;
+  display: block;
 }
 
 .hero__body {

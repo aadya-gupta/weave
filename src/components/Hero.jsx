@@ -18,13 +18,13 @@ export default function Hero() {
 
     const initNodes = () => {
       nodes = [];
-      const count = Math.floor((canvas.width * canvas.height) / 8000);
+      const count = Math.floor((canvas.width * canvas.height) / 7000);
       for (let i = 0; i < count; i++) {
         nodes.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
+          vx: (Math.random() - 0.5) * 0.45,
+          vy: (Math.random() - 0.5) * 0.45,
           r: Math.random() * 2.5 + 1,
         });
       }
@@ -38,13 +38,12 @@ export default function Hero() {
           const dx = nodes[i].x - nodes[j].x;
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const threshold = 120;
-          if (dist < threshold) {
-            const alpha = 1 - dist / threshold;
+          if (dist < 130) {
+            const alpha = (1 - dist / 130) * 0.35;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(10,10,10,${alpha * 0.35})`;
+            ctx.strokeStyle = `rgba(10,10,10,${alpha})`;
             ctx.lineWidth = 0.7;
             ctx.stroke();
           }
@@ -54,9 +53,8 @@ export default function Hero() {
       nodes.forEach((n) => {
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(10,10,10,0.75)';
+        ctx.fillStyle = 'rgba(10,10,10,0.7)';
         ctx.fill();
-
         n.x += n.vx;
         n.y += n.vy;
         if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
@@ -75,7 +73,7 @@ export default function Hero() {
     };
   }, []);
 
-  const scrollToHowItWorks = () => {
+  const scrollDown = () => {
     document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -90,25 +88,18 @@ export default function Hero() {
 
       <canvas ref={canvasRef} className="hero__canvas" />
 
-      <div className="hero__accent">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <path d="M0 32 L0 0 L32 0" stroke="#b8f400" strokeWidth="4" fill="none" />
-        </svg>
-      </div>
-
       <div className="hero__content">
         <h1 className="hero__headline">
-          we map<br />curiosity.
+          <span className="hero__headline--pixel">where will </span>
+          <span className="hero__headline--script">curiosity</span>
+          <span className="hero__headline--pixel">take you?</span>
         </h1>
-        <div className="hero__sub">
-          <button className="hero__cta-ghost" onClick={scrollToHowItWorks}>
-            View how it works ↓
-          </button>
-        </div>
+        <button className="hero__scroll-cta" onClick={scrollDown}>
+          Explore more ↓
+        </button>
       </div>
 
       <div className="hero__cta-group">
-        <button className="btn-cta btn-cta--primary">Explore More</button>
         <button className="btn-cta btn-cta--secondary">Use Now</button>
       </div>
     </section>

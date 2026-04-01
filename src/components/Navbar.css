@@ -1,5 +1,5 @@
 .navbar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -18,12 +18,12 @@
 }
 
 .logo-text {
-  font-family: var(--font-pixel);
-  font-weight: 50;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
   font-style: normal;
-  font-size: 32px;
-  color: var(--fg);
-  letter-spacing: 0.02em;
+  font-size: 25px;
+  color: var(--ink);
+  letter-spacing: -0.2px;
 }
 
 .logo-tag {
