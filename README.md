@@ -1,21 +1,168 @@
-<<<<<<< HEAD
-# React + Vite
+# Weave — Curiosity Map
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> *Stop scrolling. Start exploring.*
 
-Currently, two official plugins are available:
+Weave is a personal curiosity mapping tool that helps you rediscover who you are and what you love. Instead of endlessly consuming other people's content, Weave builds a living visual graph of your own interests — connecting the dots between them in ways you've never seen before.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## The Problem
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The average person spends 2.5 hours daily on social media — not because they want to, but because they've lost touch with their own curiosity. Platforms are designed to fill your attention with other people's lives. Nobody is designed to help you rediscover your own.
 
-## Expanding the ESLint configuration
+The problem isn't too much content. It is the chaos of our interests in our brain.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# weave
-Curiosity building app
->>>>>>> c126837160413e1a569f8570bcfc1b6521df82f1
+---
+
+## What is Weave?
+
+Weave generates a personal **knowledge graph** seeded from your interests and hobbies. Each node on the map is something you care about. Click any node and you get:
+
+- A quick fact that reframes the topic
+- A curated video and article to dive in
+- One thing you can **do right now, in 15 minutes**
+
+The map also finds **intersection nodes** — surprising connections *between* your interests that you'd never have discovered yourself. Into gaming *and* writing? There's a whole world of narrative design waiting for you.
+
+---
+
+## Features
+
+- **Curiosity Graph** — an interactive, zoomable node graph built from your interests
+- **Rabbit Hole Nodes** — deeper sub-topics branching from each interest
+- **Intersection Nodes** — AI-discovered connections between two or more of your interests, connected to all parent nodes
+- **15-Minute Action Cards** — every node has one thing you can do today, right now, for free
+- **Node-attached Popups** — click any node for a minimal, open-typography popup with curated content
+- **Curiosity Cabinet** — save your favourite nodes and actions for later
+- **Share Your Map** — one link, read-only, shareable like a Spotify Wrapped for your curiosity
+- **Socially adjacent** — see how many others share your intersection, no followers or likes
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React (Vite) |
+| Graph Rendering | [@xyflow/react](https://xyflow.com) |
+| Fonts | Instrument Serif + DM Mono (Google Fonts) |
+| LLM (roadmap) | Groq + LLaMA 3 |
+| Backend (roadmap) | FastAPI |
+| Database (roadmap) | Supabase (Postgres) |
+| Hosting | Vercel |
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/your-username/weave.git
+cd weave
+
+# Install dependencies
+npm install
+
+# Install graph library
+npm install @xyflow/react
+
+# Start dev server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## Project Structure
+
+```
+weave/
+├── src/
+│   ├── App.jsx               # Root component
+│   ├── CuriosityMap.jsx      # Main map component (graph + popups + menu)
+│   ├── index.css             # Global styles + root height fix
+│   └── main.jsx              # Vite entry point
+├── public/
+├── index.html
+├── vite.config.js
+└── package.json
+```
+
+---
+
+## How It Works
+
+### Graph Layout
+
+The graph is built programmatically using a polar coordinate layout:
+
+- **Central node** — you, at the origin
+- **Interest nodes** — placed in a ring around the center using equal angular spacing
+- **Rabbit hole nodes** — branch outward from each interest at spread angles
+- **Intersection nodes** — placed at the geometric centroid of their parent interests, with edges connecting to all parents
+
+### Popup System
+
+Clicking any node opens a minimal popup anchored near the click position. The popup auto-clamps to the viewport so it never goes offscreen. It contains:
+
+1. A quick fact
+2. Curated links (video + article)
+3. A single 15-minute action
+
+### Intersection Logic
+
+Intersections are pre-computed connections between two or more interests. In the prototype these are hardcoded. In production, these will be generated by an LLM prompt that reasons across the user's full interest profile to find non-obvious cross-domain connections.
+
+---
+
+## Current State (Prototype)
+
+This is a hackathon prototype with hardcoded data for a demo persona (developer into gaming, writing, and fitness). The following are hardcoded:
+
+- Interest nodes: gaming, writing, fitness
+- Rabbit holes: game design, speedrunning, tabletop RPGs, worldbuilding, flash fiction, calisthenics, breathwork
+- Intersections: game narratives (gaming × writing), flow states (gaming × fitness), performance journaling (writing × fitness)
+
+---
+
+## Roadmap
+
+### Near Term
+- [ ] Onboarding flow with rich interest questions
+- [ ] LLM-powered graph generation from user input (Groq + LLaMA 3)
+- [ ] Dynamic node expansion on click
+- [ ] Curiosity Cabinet (saved nodes)
+- [ ] Mobile responsive layout
+
+### Medium Term
+- [ ] User accounts + persistent maps (Supabase)
+- [ ] Share map as public read-only link
+- [ ] Weekly curiosity nudge (cron + LLM)
+- [ ] Mood-based graph filtering
+
+### Long Term
+- [ ] Collaborative maps — merge two people's curiosity graphs
+- [ ] Anonymous global intersection graph across all users
+- [ ] School and university integrations
+- [ ] Mobile app
+
+---
+
+## Design Philosophy
+
+Weave is intentionally **not a social media platform**. There are no feeds, no follower counts, no likes. The only social feature is an anonymous count of how many others share your intersection — just enough to make you feel seen, not enough to make you perform.
+
+The visual language — cream background, thin lines, minimal circles, open typography — is designed to feel like a sketchbook or a journal, not a dashboard.
+
+> *"It's not a recommendation engine. It's a map of who you are and who you could become."*
+
+
+*Built with curiosity; from ours to yours*
